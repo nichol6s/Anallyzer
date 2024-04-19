@@ -1,12 +1,18 @@
-import { Text, View } from 'react-native'
 import React from 'react'
-import { verifyInstallation } from 'nativewind'
+import { Text, View, ScrollView } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 
-export default function index() {
+export default function Overview() {
   return (
-    <View className='flex w-full mt-40'>
-      <Text className='text-red-400'>index</Text>
-    </View>
+    <LinearGradient
+      colors={['#DAD5FB', '#FFF']}
+      start={[0, 0]}
+      end={[0, 1]}
+      className="w-full h-full"
+    >
+      <Text className='text-red-400 mt-10'>Overview Page</Text>
+    </LinearGradient>
+
   )
 }
 
