@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, ScrollView } from 'react-native'
+import { Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export default function Overview() {

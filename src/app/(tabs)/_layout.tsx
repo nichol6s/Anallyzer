@@ -8,7 +8,7 @@ export default function TabsLayout() {
     return (
         <Tabs screenOptions={{ headerShown: false, tabBarLabel: () => false }} >
             <Tabs.Screen
-                name="index"
+                name="overview"
                 options={{
                     tabBarIcon: ({ color }) => <Octicons name="home" size={22} color={color} />,
                     tabBarInactiveTintColor: "gray",
