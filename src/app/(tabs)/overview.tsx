@@ -1,6 +1,9 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+
+import Button from '@/src/components/button'
+import { router } from 'expo-router'
 
 export default function Overview() {
   return (
@@ -8,9 +11,17 @@ export default function Overview() {
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
       end={[0, 1]}
-      className="w-full h-full"
+      className="flex-1"
     >
-      <Text className='text-red-400 mt-10'>Overview Page</Text>
+      <ScrollView>
+
+        <View>
+          <Text className='font-mediumj text-4xl'>Overview Page</Text>
+        </View>
+
+        <Button title='Go to Campaign' onPress={() => router.push("/signup")} />
+
+      </ScrollView>
     </LinearGradient>
 
   )
