@@ -5,14 +5,14 @@ import "../../styles/global.css"
 
 export default function StackLayout() {
     return (
-        <Stack>
-            <Stack.Screen name="signup" options={{}} />
-            <Stack.Screen name="login" options={{}} />
-            <Stack.Screen name="forgot-password" options={{}} />
-            <Stack.Screen name="verify-code" options={{}} />
-            <Stack.Screen name="new-password" options={{}} />
-            <Stack.Screen name="campaign" options={{}} />
-            <Stack.Screen name="detailed-insights" options={{}} />
+        <Stack screenOptions={{ headerShown: false }} >
+            <Stack.Screen name="signup" />
+            <Stack.Screen name="login" />
+            <Stack.Screen name="forgot-password" />
+            <Stack.Screen name="verify-code" />
+            <Stack.Screen name="new-password" />
+            <Stack.Screen name="campaign" />
+            <Stack.Screen name="detailed-insights" />
         </Stack>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, Pressable } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
@@ -13,7 +13,7 @@ export default function Welcome() {
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
             end={[0, 1]}
-            className="flex-1"
+            className="flex-1 px-10"
         >
             <StatusBar style="dark" />
 
@@ -24,7 +24,7 @@ export default function Welcome() {
                 />
             </View>
 
-            <View className='items-left ml-10 mb-14 gap-10'>
+            <View className='items-left mb-14 gap-10'>
                 <Text className='text-4xl w-[80%] font-mediumj'>Seja bem-vindo ao Anallyzer</Text>
 
                 <Text className='text-base font-regular'>
@@ -33,15 +33,16 @@ export default function Welcome() {
                 </Text>
             </View>
 
-            <View className='items-center gap-4'>
-                <Button title='Junte-se a nós!' onPress={() => router.push("/overview")} />
+            <View className='items-center'>
+                <Button title='Junte-se a nós!' onPress={() => router.push("/signup")} />
+            </View>
 
-                <Text className='font-regular text-gray-200'>
-                    Já possui uma conta?
-                    <Text className='font-bold underline' onPress={() => router.push("/login")}>
-                        Login
-                    </Text>
-                </Text>
+            <View className='flex-row justify-center mt-4'>
+                <Text className='font-regular text-gray-200'> Já possui uma conta? </Text>
+
+                <Pressable onPress={() => router.push("/login")}>
+                    <Text className='font-bold underline text-gray-200'>Login</Text>
+                </Pressable>
             </View>
 
         </LinearGradient>
