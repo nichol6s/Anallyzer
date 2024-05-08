@@ -4,7 +4,7 @@ import { colors } from '../styles/colors'
 
 function SearchBar({ children }: { children: React.ReactNode }) {
     return (
-        <View className="w-full h-[55px] flex-row items-center gap-3 pl-8 border border-gray-100 rounded-full">
+        <View className="w-full h-14 flex-row items-center gap-3 pl-8 border border-gray-100 rounded-full">
             {children}
         </View>
     )
@@ -17,7 +17,7 @@ function Field({ ...rest }: TextInputProps) {
             placeholderTextColor={colors.black[100]}
             {...rest}
         />
-        
+
     )
 }
 
