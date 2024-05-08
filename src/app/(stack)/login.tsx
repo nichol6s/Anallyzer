@@ -31,7 +31,7 @@ export default function Login() {
             <View className='gap-4 mb-3'>
                 <Text className='font-medium'>Senha</Text>
                 <Input>
-                    <Input.Field placeholder='Senha' />
+                    <Input.Field placeholder='Digite sua senha' />
                 </Input>
             </View>
             <View className='w-full items-end mb-9'>
