@@ -39,7 +39,7 @@ export default function Login() {
                     <Text className='font-bold underline text-gray-200'> Esqueceu a senha?</Text>
                 </Pressable>
             </View>
-            <Button title='Login' />
+            <Button title='Login' onPress={() => router.push("/overview")} />
             <View className='flex-row justify-center mt-4'>
                 <Text className='font-regular text-gray-200'>Ainda não possui uma conta? </Text>
                 <Pressable onPress={() => router.push("/signup")}>
