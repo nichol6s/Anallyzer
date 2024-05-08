@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack } from "expo-router";
 
-import "../styles/global.css"
+import "@/styles/global.css"
 
 import { useFonts } from "expo-font";
 import {

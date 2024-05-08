@@ -3,9 +3,9 @@ import { useRouter } from 'expo-router'
 import React from 'react'
 import { Pressable, Text, View } from 'react-native'
 
-import Arrow from '@/src/components/arrow-back'
-import Button from '@/src/components/button'
-import { Input } from '@/src/components/input'
+import Arrow from '@/components/arrow-back'
+import Button from '@/components/button'
+import { Input } from '@/components/input'
 export default function Login() {
     const router = useRouter()
 
