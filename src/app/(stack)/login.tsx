@@ -5,6 +5,7 @@ import { Pressable, Text, View } from 'react-native'
 
 import Arrow from '@/src/components/arrow-back'
 import Button from '@/src/components/button'
+import { Input } from '@/src/components/input'
 export default function Login() {
     const router = useRouter()
 
@@ -20,6 +21,23 @@ export default function Login() {
             </View>
             <View className='my-[30px]'>
                 <Text className='text-4xl font-medium tracking-tight leading-[44px]'>Login</Text>
+            </View>
+            <View className='gap-4 mb-5'>
+                <Text className='font-medium'>Email</Text>
+                <Input>
+                    <Input.Field placeholder='Digite seu email' />
+                </Input>
+            </View>
+            <View className='gap-4 mb-3'>
+                <Text className='font-medium'>Senha</Text>
+                <Input>
+                    <Input.Field placeholder='Senha' />
+                </Input>
+            </View>
+            <View className='w-full items-end mb-9'>
+                <Pressable onPress={() => router.push("/forgot-password")}>
+                    <Text className='font-bold underline text-gray-200'> Esqueceu a senha?</Text>
+                </Pressable>
             </View>
             <Button title='Login' />
             <View className='flex-row justify-center mt-4'>
