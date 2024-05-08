@@ -24,7 +24,7 @@ export default function Login() {
             <Button title='Login' />
             <View className='flex-row justify-center mt-4'>
                 <Text className='font-regular text-gray-200'>Ainda não possui uma conta? </Text>
-                <Pressable onPress={() => router.push("/login")}>
+                <Pressable onPress={() => router.push("/signup")}>
                     <Text className='font-bold underline text-gray-200'>Registrar-se</Text>
                 </Pressable>
             </View>
