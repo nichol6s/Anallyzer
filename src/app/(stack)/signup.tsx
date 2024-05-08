@@ -1,10 +1,11 @@
-import React from 'react'
-import { Text, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
+import React from 'react'
+import { Pressable, Text, View } from 'react-native'
 
 import Arrow from '@/src/components/arrow-back'
 
+import Button from '@/src/components/button'
 import { Input } from '@/src/components/input'
 
 export default function Signup() {
@@ -25,12 +26,31 @@ export default function Signup() {
                 <Text className='text-4xl font-mediumj'>Crie sua conta</Text>
             </View>
 
-            <View className='items-left mt-10 gap-4'>
+            <View className='items-left mt-10 gap-4 mb-4'>
                 <Text className='font-medium'>Nome da empresa</Text>
 
                 <Input>
                     <Input.Field placeholder='Digite o nome da empresa' />
                 </Input>
+            </View>
+            <View className='gap-4 mb-4'>
+                <Text className='font-medium'>Email</Text>
+                <Input>
+                    <Input.Field placeholder='Email' />
+                </Input>
+            </View>
+            <View className='gap-4 mb-12'>
+                <Text className='font-medium'>Senha</Text>
+                <Input>
+                    <Input.Field placeholder='Senha' />
+                </Input>
+            </View>
+            <Button title='Criar conta' />
+            <View className='flex-row justify-center mt-4'>
+                <Text className='font-regular text-gray-200'>Já possui uma conta? </Text>
+                <Pressable onPress={() => router.push("/login")}>
+                    <Text className='font-bold underline text-gray-200'>Login</Text>
+                </Pressable>
             </View>
         </LinearGradient>
     )
