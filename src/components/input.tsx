@@ -4,7 +4,7 @@ import { colors } from "../styles/colors"
 
 function Input({ children }: { children: React.ReactNode }) {
     return (
-        <View className="w-full h-14 flex-row items-center gap-3 pl-6 border border-gray-100 rounded-[16px]">
+        <View className="w-full h-[50px] flex-row items-center gap-3 pl-6 border border-gray-100 rounded-[16px]">
             {children}
         </View>
     )
@@ -13,7 +13,7 @@ function Input({ children }: { children: React.ReactNode }) {
 function Field({ ...rest }: TextInputProps) {
     return (
         <TextInput
-            className="flex-1 text-black-100 text-base font-light"
+            className="flex-1 text-black-100 text-sm font-light"
             placeholderTextColor={colors.black[100]}
             {...rest}
         />
@@ -23,3 +23,4 @@ function Field({ ...rest }: TextInputProps) {
 Input.Field = Field
 
 export { Input }
+
