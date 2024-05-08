@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 
-import Button from '@/src/components/button'
+import Button from '@/components/button'
 import { router } from 'expo-router'
 
 export default function Overview() {

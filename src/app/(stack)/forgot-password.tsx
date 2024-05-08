@@ -1,10 +1,12 @@
-import Arrow from '@/src/components/arrow-back'
-import Button from '@/src/components/button'
-import { Input } from '@/src/components/input'
-import { LinearGradient } from 'expo-linear-gradient'
-import { router } from 'expo-router'
 import React from 'react'
 import { Text, View } from 'react-native'
+
+import { LinearGradient } from 'expo-linear-gradient'
+import { router } from 'expo-router'
+
+import Arrow from '@/components/arrow-back'
+import Button from '@/components/button'
+import { Input } from '@/components/input'
 
 export default function forgotPassword() {
     return (
@@ -21,8 +23,8 @@ export default function forgotPassword() {
                 <Text className='text-4xl font-medium tracking-tight leading-[44px]'>Esqueceu Senha</Text>
             </View>
             <View className='gap-4 mb-8'>
-                <Text className='font-medium'>Por favor digite seu e-mail para receber 
-um código de verificação.</Text>
+                <Text className='font-medium'>Por favor digite seu e-mail para receber
+                    um código de verificação.</Text>
                 <Input>
                     <Input.Field placeholder='Digite seu e-mail' />
                 </Input>
