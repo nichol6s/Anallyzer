@@ -1,11 +1,11 @@
 import React from 'react'
 import { Text, View, Image, Pressable } from 'react-native'
 
+import { StatusBar } from 'expo-status-bar'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
 
-import Button from '../components/button'
-import { StatusBar } from 'expo-status-bar'
+import Button from "@/components/button"
 
 export default function Welcome() {
     return (
