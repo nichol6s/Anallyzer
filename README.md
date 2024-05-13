@@ -1,6 +1,3 @@
-[FIGMA_BADGE]: https://img.shields.io/badge/Nosso%20prot%C3%B3tipo-A259FF?style=for-the-badge&logo=figma&logoColor=white
-[FIGMA_URL]: https://www.figma.com/file/oL167JVtoKgnQxj8vruw1R/Anallyzer-app-Prototype?type=design&node-id=0%3A1&mode=design&t=9Vkd9DS067MW0VHq-1
-
 <div align="center">
   <img src="src/assets/anallyzer-logo.png">
 </div>
@@ -25,7 +22,7 @@
 
 Seja bem-vindo ao Anallyzer, um app focado em análise de campanhas de e-mail marketing.
 
-<a href="[FIGMA_URL]" target="_blank"><img src="https://img.shields.io/badge/Nosso%20prot%C3%B3tipo-A259FF?style=for-the-badge&logo=figma&logoColor=white" alt="figma"></a>
+<a href="https://www.figma.com/file/oL167JVtoKgnQxj8vruw1R/Anallyzer-app-Prototype?type=design&node-id=0%3A1&mode=design&t=9Vkd9DS067MW0VHq-1" target="_blank"><img src="https://img.shields.io/badge/Nosso%20prot%C3%B3tipo-A259FF?style=for-the-badge&logo=figma&logoColor=white" alt="figma"></a>
 
 
 <h2 id="started">🚀 Começando</h2>
