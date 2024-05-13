@@ -25,7 +25,8 @@
 
 Seja bem-vindo ao Anallyzer, um app focado em análise de campanhas de e-mail marketing.
 
-[![figma][FIGMA_BADGE]][FIGMA_URL]
+<a href="[FIGMA_URL]" target="_blank"><img src="https://img.shields.io/badge/Nosso%20prot%C3%B3tipo-A259FF?style=for-the-badge&logo=figma&logoColor=white" alt="figma"></a>
+
 
 <h2 id="started">🚀 Começando</h2>
 
