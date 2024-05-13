@@ -1,3 +1,6 @@
+[FIGMA_BADGE]: https://img.shields.io/badge/Nosso%20prot%C3%B3tipo-A259FF?style=for-the-badge&logo=figma&logoColor=white
+[FIGMA_URL]: https://www.figma.com/file/oL167JVtoKgnQxj8vruw1R/Anallyzer-app-Prototype?type=design&node-id=0%3A1&mode=design&t=9Vkd9DS067MW0VHq-1
+
 <div align="center">
   <img src="src/assets/anallyzer-logo.png">
 </div>
@@ -22,7 +25,7 @@
 
 Seja bem-vindo ao Anallyzer, um app focado em análise de campanhas de e-mail marketing.
 
-![prototype](https://img.shields.io/badge/NOSSO%20PROT%C3%93TIPO-A259FF?style=for-the-badge&logo=figma&logoColor=white&link=https%3A%2F%2Fwww.figma.com%2Ffile%2FoL167JVtoKgnQxj8vruw1R%2FAnallyzer-app-Prototype%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DHKGIx3SV5wX43e7E-1)
+[![figma][FIGMA_BADGE]][FIGMA_URL]
 
 <h2 id="started">🚀 Começando</h2>
 
@@ -68,7 +71,7 @@ Temos duas formas de abrir o projeto:
   #Escaneie o QRCode que aparece no terminal
   ```
   
-<h2 id="colab">🤝 Collaboradores</h2>
+<h2 id="colab">🤝 Colaboradores</h2>
 
 Special thank you for all people that contributed for this project.
 
