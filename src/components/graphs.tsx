@@ -6,6 +6,10 @@ import { colors } from "@/styles/colors"
 
 import SalesFigureSvg from "@/assets/Graphs/SalesFigures.svg"
 import HitRateSvg from "@/assets/Graphs/HitRate.svg"
+import AllVisitorSvg from "@/assets/Graphs/AllVisitor.svg"
+import SalesReportSvg from "@/assets/Graphs/SalesReport.svg"
+import PlatformVisitorSvg from "@/assets/Graphs/PlatformVisitor.svg"
+import TopSalesLocationsSvg from "@/assets/Graphs/TopSalesLocations.svg"
 
 type BasicGraphProps = {
     title: string
@@ -37,24 +41,37 @@ function BasicGraph({ title, percentage, quantity, valueLastYear }: BasicGraphPr
 }
 
 function SalesFigures() {
-    return (
-        <View>
-            <SalesFigureSvg />
-        </View>
-    )
+    return <SalesFigureSvg />
 }
 
 function HitRate() {
-    return (
-        <HitRateSvg />
-    )
+    return <HitRateSvg />
+}
+
+function AllVisitor() {
+    return <AllVisitorSvg />
+}
+
+function SalesReport() {
+    return <SalesReportSvg />
+}
+
+function PlatformVisitor() {
+    return <PlatformVisitorSvg />
+}
+
+function TopSalesLocations() {
+    return <TopSalesLocationsSvg />
 }
 
 const Graph = {
     BasicGraph,
     SalesFigures,
-    HitRate
-
+    HitRate,
+    AllVisitor,
+    SalesReport,
+    PlatformVisitor,
+    TopSalesLocations
 }
 
 export { Graph }
