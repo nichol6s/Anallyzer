@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
-import { BasicGraph } from '@/components/graphs'
+import { BasicGraph, SalesFigures } from '@/components/graphs'
 
 
 export default function Overview() {
@@ -12,9 +12,9 @@ export default function Overview() {
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
       end={[0, 1]}
-      className="flex-1 p-6"
+      className="flex-1 px-10 py-6"
     >
-      <ScrollView>
+      <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
 
         <View className='items-left gap-2 mb-6'>
           <Text className='font-mediumj text-4xl mt-16'>Overview</Text>
@@ -48,6 +48,10 @@ export default function Overview() {
             valueLastYear={16.800}
           />
 
+        </View>
+
+        <View className='align-center mt-6'>
+          <SalesFigures />
         </View>
 
       </ScrollView>

@@ -4,6 +4,8 @@ import { View, Text } from "react-native"
 import { AntDesign } from "@expo/vector-icons"
 import { colors } from "@/styles/colors"
 
+import SalesFigureSvg from "@/assets/SalesFigures.svg"
+
 type BasicGraphProps = {
     title: string
     percentage?: string
@@ -13,7 +15,7 @@ type BasicGraphProps = {
 
 function BasicGraph({ title, percentage, quantity, valueLastYear }: BasicGraphProps) {
     return (
-        <View className=" w-44 h-36 p-4 rounded-3xl bg-white">
+        <View className=" w-[145] h-36 p-4 rounded-3xl bg-white">
 
             <View className="flex-row gap-2">
                 <Text className="font-semibold text-sm">{title}</Text>
@@ -28,9 +30,17 @@ function BasicGraph({ title, percentage, quantity, valueLastYear }: BasicGraphPr
 
             <Text className="font-semibold text-2xl mt-2">{quantity}</Text>
 
-            <Text className="font-regular text-gray-200 text-sm mt-2">Comparado com {valueLastYear} ano passado</Text>
+            <Text className="font-regular text-gray-200 text-xs mt-2">Comparado com {valueLastYear} ano passado</Text>
         </View>
     )
 }
 
-export { BasicGraph }
+function SalesFigures() {
+    return (
+        <View>
+            <SalesFigureSvg />
+        </View>
+    )
+}
+
+export { BasicGraph, SalesFigures }
