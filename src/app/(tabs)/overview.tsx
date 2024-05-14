@@ -3,7 +3,7 @@ import { Text, View, ScrollView } from 'react-native'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
-import { BasicGraph, SalesFigures } from '@/components/graphs'
+import { Graph } from '@/components/graphs'
 
 
 export default function Overview() {
@@ -23,25 +23,25 @@ export default function Overview() {
 
         <View className='flex-row flex-wrap gap-3 '>
 
-          <BasicGraph
+          <Graph.BasicGraph
             title='Cliques'
             percentage='+10%'
             quantity={88.438}
             valueLastYear={86.400}
           />
-          <BasicGraph
+          <Graph.BasicGraph
             title='Aberturas'
             percentage='+12%'
             quantity={120.921}
             valueLastYear={107.500}
           />
-          <BasicGraph
+          <Graph.BasicGraph
             title='Envios'
             percentage='-5%'
             quantity={201.769}
             valueLastYear={212.340}
           />
-          <BasicGraph
+          <Graph.BasicGraph
             title='Leads'
             percentage='+3.5%'
             quantity={17.390}
@@ -51,7 +51,7 @@ export default function Overview() {
         </View>
 
         <View className='align-center mt-6'>
-          <SalesFigures />
+          <Graph.SalesFigures />
         </View>
 
       </ScrollView>

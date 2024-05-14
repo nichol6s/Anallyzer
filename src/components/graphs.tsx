@@ -4,7 +4,8 @@ import { View, Text } from "react-native"
 import { AntDesign } from "@expo/vector-icons"
 import { colors } from "@/styles/colors"
 
-import SalesFigureSvg from "@/assets/SalesFigures.svg"
+import SalesFigureSvg from "@/assets/Graphs/SalesFigures.svg"
+import HitRateSvg from "@/assets/Graphs/HitRate.svg"
 
 type BasicGraphProps = {
     title: string
@@ -43,4 +44,17 @@ function SalesFigures() {
     )
 }
 
-export { BasicGraph, SalesFigures }
+function HitRate() {
+    return (
+        <HitRateSvg />
+    )
+}
+
+const Graph = {
+    BasicGraph,
+    SalesFigures,
+    HitRate
+
+}
+
+export { Graph }
