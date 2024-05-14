@@ -25,7 +25,7 @@ export default function Welcome() {
             </View>
 
             <View className='items-left mb-14 gap-10'>
-                <Text className='text-4xl w-[80%] font-mediumj'>Seja bem-vindo ao Anallyzer</Text>
+                <Text className='text-4xl w-[85%] font-mediumj'>Seja bem-vindo ao Anallyzer</Text>
 
                 <Text className='text-base font-regular'>
                     Analise, preveja e aja para impulsionar vendas e lucros.
