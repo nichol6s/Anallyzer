@@ -84,7 +84,6 @@ export default function DetailedInsights() {
                 </View>
             </ScrollView>
 
-
         </LinearGradient>
     )
 }
