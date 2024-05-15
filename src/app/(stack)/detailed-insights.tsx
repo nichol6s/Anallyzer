@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 
 import { useRouter } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
+
 import Arrow from '@/components/arrow-back'
 
 
@@ -20,9 +21,13 @@ export default function DetailedInsights() {
                 <Arrow onPress={() => router.back()} />
             </View>
 
+
             <View className='items-left'>
-                <Text className='text-black text-2xl font-mediumj'>Novidades da Semana: Camp...</Text>
+                <Text className='text-2xl font-mediumj'>
+                    Novidades da Semana: Camp...
+                </Text>
             </View>
+
         </LinearGradient>
     )
 }
