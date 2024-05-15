@@ -36,7 +36,7 @@ export default function Dashboard() {
             date='12 Dez, 2023'
             clicks={33.889}
           />
-          <CampaignCard.Button title='Gerar análise' onPress={() => router.push("/detailed-insights")} />
+          <CampaignCard.Button title='Gerar análise' onPress={() => router.push("/campaign")} />
         </CampaignCard>
 
         <CampaignCard>

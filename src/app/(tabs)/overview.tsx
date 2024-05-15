@@ -24,7 +24,6 @@ export default function Overview() {
         <View className='ml-4'>
 
           <View className='flex-row flex-wrap gap-3 '>
-
             <Graph.BasicGraph
               title='Cliques'
               percentage='+10%'
@@ -49,7 +48,6 @@ export default function Overview() {
               quantity={17.390}
               valueLastYear={16.800}
             />
-
           </View>
 
           <View className='align-center mt-6 gap-2 mb-6'>
@@ -67,6 +65,7 @@ export default function Overview() {
 
             <Graph.TopSalesLocations />
           </View>
+
         </View>
       </ScrollView>
     </LinearGradient>
