@@ -21,7 +21,7 @@ type BasicGraphProps = {
 
 function BasicGraph({ title, percentage, quantity, valueLastYear }: BasicGraphProps) {
     return (
-        <View className=" w-[145] h-36 p-4 rounded-3xl bg-white">
+        <View className=" w-[150] h-36 p-4 rounded-3xl bg-white">
 
             <View className="flex-row gap-2">
                 <Text className="font-semibold text-sm">{title}</Text>
@@ -65,31 +65,31 @@ function LargeGraph({ quantity, title, percentage }: LargeGraphProps) {
 }
 
 function SalesFigures() {
-    return <SalesFigureSvg />
+    return <SalesFigureSvg width={310} />
 }
 
 function HitRate() {
-    return <HitRateSvg />
+    return <HitRateSvg width={310} />
 }
 
 function AllVisitor() {
-    return <AllVisitorSvg />
+    return <AllVisitorSvg width={310} />
 }
 
 function SalesReport() {
-    return <SalesReportSvg />
+    return <SalesReportSvg width={310} />
 }
 
 function PlatformVisitor() {
-    return <PlatformVisitorSvg />
+    return <PlatformVisitorSvg width={310} />
 }
 
 function TopSalesLocations() {
-    return <TopSalesLocationsSvg />
+    return <TopSalesLocationsSvg width={310} />
 }
 
 function CustomerGrowth() {
-    return <CustomerGrowthSvg />
+    return <CustomerGrowthSvg width={310} />
 }
 
 const Graph = {
