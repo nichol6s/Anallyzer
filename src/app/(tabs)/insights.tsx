@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ScrollView, Text, View, FlatList, SectionList } from "react-native";
+import { ScrollView, Text, View, FlatList } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,8 +17,9 @@ export default function Insights() {
 
   function handleCategorySelected(selectedCategory: string) {
     setCategory(selectedCategory)
-
   }
+
+  const filteredInsights = INSIGHTS.find((item) => item.category === category)?.data || [];
 
   return (
     <LinearGradient
@@ -53,18 +54,10 @@ export default function Insights() {
         />
       </View>
 
-      <InsightCard />
-
-      {/* <SectionList 
-          sections={INSIGHTS}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            
-          )}
-          showsVerticalScrollIndicator={false}
-        /> */}
-
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 20 }}>
+        {filteredInsights.map((insight) => (
+          <InsightCard key={insight.id} insight={insight} />
+        ))}
       </ScrollView>
     </LinearGradient>
   )

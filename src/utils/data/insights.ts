@@ -44,7 +44,7 @@ const INSIGHTS = [
         category: 'Aberturas',
         data: [
             {
-                id: "1",
+                id: "5",
                 title: "Melhorando as Taxas de Abertura",
                 subtitle: "Como escrever linhas de assunto atraentes",
                 subcategory: "Dicas de abertura",
@@ -53,7 +53,7 @@ const INSIGHTS = [
                 content2: "Use personalização: Inclua o nome do destinatário na linha de assunto para torná-lo mais atraente. Mantenha-se breve e direto: Linhas de assunto curtas e objetivas tendem a ser mais eficazes. Crie um senso de urgência: Utilize palavras que criem uma necessidade de ação imediata."
             },
             {
-                id: "2",
+                id: "6",
                 title: "Melhores Horários para Envio",
                 subtitle: "Aumentando a visibilidade dos seus e-mails",
                 subcategory: "Dicas de abertura",
@@ -62,7 +62,7 @@ const INSIGHTS = [
                 content2: "Conheça seu público: Entenda os hábitos do seu público e envie e-mails nos horários em que eles estão mais propensos a abrir. Teste diferentes horários: Faça testes para determinar quais horários funcionam melhor. Evite horários de pico: Enviar e-mails em horários menos concorridos pode ajudar a se destacar na caixa de entrada."
             },
             {
-                id: "3",
+                id: "7",
                 title: "O Impacto do Pré-Cabeçalho",
                 subtitle: "Maximize a abertura com pré-cabeçalhos eficazes",
                 subcategory: "Dicas de abertura",
@@ -71,7 +71,7 @@ const INSIGHTS = [
                 content2: "Seja claro e conciso: O pré-cabeçalho deve complementar a linha de assunto e fornecer mais contexto. Crie expectativa: Use o pré-cabeçalho para criar curiosidade e incentivar a abertura do e-mail. Teste diferentes abordagens: Experimente com diferentes mensagens para ver o que funciona melhor."
             },
             {
-                id: "4",
+                id: "8",
                 title: "A Importância do Remetente",
                 subtitle: "Como o nome do remetente afeta as aberturas",
                 subcategory: "Dicas de abertura",
@@ -85,7 +85,7 @@ const INSIGHTS = [
         category: 'Envios',
         data: [
             {
-                id: "1",
+                id: "9",
                 title: "Automatização de Envios",
                 subtitle: "Simplificando o processo de e-mail marketing",
                 subcategory: "Dicas de envio",
@@ -94,7 +94,7 @@ const INSIGHTS = [
                 content2: "Configure fluxos de trabalho: Utilize automação para enviar e-mails baseados em ações específicas dos usuários. Use gatilhos: Crie gatilhos que disparem e-mails automaticamente com base em comportamentos ou eventos. Monitorize e ajuste: Acompanhe o desempenho das suas campanhas automatizadas e faça ajustes conforme necessário."
             },
             {
-                id: "2",
+                id: "10",
                 title: "Segmentação de Envios",
                 subtitle: "Melhorando a relevância dos seus e-mails",
                 subcategory: "Dicas de envio",
@@ -103,7 +103,7 @@ const INSIGHTS = [
                 content2: "Divida sua lista: Segmente seus contatos com base em dados demográficos, comportamentais ou de interesse. Personalize mensagens: Envie e-mails que atendam às necessidades específicas de cada segmento. Teste diferentes abordagens: Experimente enviar diferentes tipos de conteúdo para cada segmento e analise os resultados."
             },
             {
-                id: "3",
+                id: "11",
                 title: "Frequência de Envios",
                 subtitle: "Encontrando o equilíbrio ideal",
                 subcategory: "Dicas de envio",
@@ -112,7 +112,7 @@ const INSIGHTS = [
                 content2: "Evite excessos: Enviar muitos e-mails pode levar ao cancelamento da inscrição. Seja consistente: Mantenha uma frequência regular para que os destinatários saibam o que esperar. Faça ajustes conforme necessário: Monitorize as taxas de abertura e clique para ajustar a frequência de envio."
             },
             {
-                id: "4",
+                id: "12",
                 title: "Timing de Envios",
                 subtitle: "Quando enviar seus e-mails para máximo impacto",
                 subcategory: "Dicas de envio",
@@ -126,7 +126,7 @@ const INSIGHTS = [
         category: 'Leads',
         data: [
             {
-                id: "1",
+                id: "13",
                 title: "Geração de Leads",
                 subtitle: "Estratégias para capturar novos contatos",
                 subcategory: "Dicas de leads",
@@ -135,7 +135,7 @@ const INSIGHTS = [
                 content2: "Ofereça incentivos: Utilize ofertas especiais ou descontos para incentivar a inscrição. Utilize formulários simples: Formulários curtos e diretos aumentam as chances de preenchimento. Integre com landing pages: Crie landing pages dedicadas para capturar leads de forma eficaz."
             },
             {
-                id: "2",
+                id: "14",
                 title: "Qualificação de Leads",
                 subtitle: "Identificando os leads mais promissores",
                 subcategory: "Dicas de leads",
@@ -144,7 +144,7 @@ const INSIGHTS = [
                 content2: "Use critérios de qualificação: Defina critérios claros para identificar leads qualificados. Segmente leads: Classifique os leads com base em sua qualificação para estratégias direcionadas. Automatize o processo: Utilize ferramentas de automação para ajudar na qualificação de leads."
             },
             {
-                id: "3",
+                id: "15",
                 title: "Nurturing de Leads",
                 subtitle: "Mantendo o interesse dos leads ao longo do tempo",
                 subcategory: "Dicas de leads",
@@ -153,7 +153,7 @@ const INSIGHTS = [
                 content2: "Crie conteúdos valiosos: Envie e-mails com informações úteis e relevantes. Utilize sequências de e-mails: Configure campanhas de nurturing para manter o contato regular. Acompanhe o engajamento: Monitore as interações dos leads para ajustar suas campanhas de nurturing."
             },
             {
-                id: "4",
+                id: "16",
                 title: "Automação de Leads",
                 subtitle: "Aprimorando a geração e o nurturing de leads",
                 subcategory: "Dicas de leads",
