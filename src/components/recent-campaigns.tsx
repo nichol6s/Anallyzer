@@ -16,7 +16,6 @@ type Props3 = PressableProps & {
 }
 
 function CampaignCard({ children }: Props1) {
-
     return (
         <View className="w-full px-[20] py-[15] border border-black-100/20 rounded-3xl items-center">
             {children}
