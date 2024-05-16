@@ -8,8 +8,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { SearchBar } from "@/components/search-bar";
 import { colors } from "@/styles/colors";
 
-import { CATEGORIES, INSIGHTS, InsightsProps } from "@/utils/data/insights";
+import { CATEGORIES, INSIGHTS } from "@/utils/data/insights";
 import { CategoryButton } from "@/components/category-button";
+import InsightCard from "@/components/insight-card";
 
 export default function Insights() {
   const [category, setCategory] = useState(CATEGORIES[0])
@@ -23,7 +24,7 @@ export default function Insights() {
     <LinearGradient
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
-      end={[0, 1]}
+      end={[0, 0.4]}
       className="flex-1 p-6"
     >
       <View className='items-left mt-16 mb-10'>
@@ -35,8 +36,7 @@ export default function Insights() {
         <SearchBar.Field placeholder='Pesquisar...' />
       </SearchBar>
 
-      <View className="mt-4 ml-4">
-
+      <View className="mt-4 ml-4 mb-8">
         <FlatList
           data={CATEGORIES}
           keyExtractor={(item) => item}
@@ -51,10 +51,11 @@ export default function Insights() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ gap: 10 }}
         />
+      </View>
 
+      <InsightCard />
 
-
-        {/* <SectionList 
+      {/* <SectionList 
           sections={INSIGHTS}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
@@ -62,8 +63,6 @@ export default function Insights() {
           )}
           showsVerticalScrollIndicator={false}
         /> */}
-
-      </View>
 
       <ScrollView>
       </ScrollView>
