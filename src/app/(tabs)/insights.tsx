@@ -1,5 +1,6 @@
-import React from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import React, { useState } from "react";
+
+import { ScrollView, Text, View, FlatList, SectionList } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,7 +8,17 @@ import { Ionicons } from "@expo/vector-icons";
 import { SearchBar } from "@/components/search-bar";
 import { colors } from "@/styles/colors";
 
+import { CATEGORIES, INSIGHTS, InsightsProps } from "@/utils/data/insights";
+import { CategoryButton } from "@/components/category-button";
+
 export default function Insights() {
+  const [category, setCategory] = useState(CATEGORIES[0])
+
+  function handleCategorySelected(selectedCategory: string) {
+    setCategory(selectedCategory)
+
+  }
+
   return (
     <LinearGradient
       colors={['#DAD5FB', '#FFF']}
@@ -24,18 +35,34 @@ export default function Insights() {
         <SearchBar.Field placeholder='Pesquisar...' />
       </SearchBar>
 
-      <View className="flex-row mt-4 gap-5 ml-4">
-        <Pressable >
-          <Text className='text-black text-base font-medium'>Clicks</Text>
-        </Pressable>
+      <View className="mt-4 ml-4">
 
-        <Pressable >
-          <Text className='text-gray-500 text-base font-medium'>Leads</Text>
-        </Pressable>
+        <FlatList
+          data={CATEGORIES}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <CategoryButton
+              title={item}
+              isSelected={category === item}
+              onPress={() => handleCategorySelected(item)}
+            />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ gap: 10 }}
+        />
 
-        <Pressable >
-          <Text className='text-gray-500  text-base font-medium'>Conversão</Text>
-        </Pressable>
+
+
+        {/* <SectionList 
+          sections={INSIGHTS}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            
+          )}
+          showsVerticalScrollIndicator={false}
+        /> */}
+
       </View>
 
       <ScrollView>
