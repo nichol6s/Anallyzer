@@ -12,18 +12,16 @@ export default function Overview() {
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
       end={[0, 1]}
-      className="flex-1 px-8 py-4"
+      className="flex-1 px-[22] py-[15]"
     >
-      <ScrollView className='flex-1 ' showsVerticalScrollIndicator={false}>
+      <ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
 
-        <View className='items-left gap-2 mb-6'>
-          <Text className='font-mediumj text-4xl mt-16'>Overview</Text>
-          <Text className='font-regular text-base text-gray-200'>Nesse ano <AntDesign name="caretdown" size={12} color="gray" /> </Text>
-        </View>
+          <View className='items-left gap-2 mb-6'>
+            <Text className='font-mediumj text-4xl mt-16'>Overview</Text>
+            <Text className='font-regular text-base text-gray-200 ml-1'>Nesse ano <AntDesign name="caretdown" size={12} color="gray" /> </Text>
+          </View>
 
-        <View className='ml-4'>
-
-          <View className='flex-row flex-wrap gap-3 '>
+          <View className='flex-row flex-wrap gap-5 '>
             <Graph.BasicGraph
               title='Cliques'
               percentage='+10%'
@@ -65,8 +63,6 @@ export default function Overview() {
 
             <Graph.TopSalesLocations />
           </View>
-
-        </View>
       </ScrollView>
     </LinearGradient>
 
