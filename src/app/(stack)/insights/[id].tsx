@@ -33,18 +33,25 @@ export default function InsightDetail() {
 
 
             <ScrollView className='items-left'>
-                <View>
+                <View className='gap-2 mb-12'>
                     <Text className='text-3xl font-mediumj'> {insight.title} </Text>
-                    <Text className='text-xl font-medium mb-4'> {insight.subtitle} </Text>
+                    <Text className='text-base font-medium opacity-50'> {insight.subtitle} </Text>
                 </View>
 
-                <View>
-                    <Text className='text-sm font-mediumj'> {insight.content1} </Text>
-                    <Text className='text-sm font-mediumj'> {insight.content2} </Text>
+                <View className='gap-7 text-left'>
+                    <Text className='text-sm font-medium'> {insight.content1} </Text>
+                    {insight.content2.map((item, index) => (
+                        <View key={index} className="flex-row items-start">
+                            <Text className="text-sm mr-2">•</Text>
+                            <View className="flex-1">
+                                <Text className="font-semibold text-sm">{item.title}</Text>
+                                <Text className="text-sm">{item.description}</Text>
+                            </View>
+                        </View>
+                    ))}
                 </View>
 
             </ScrollView>
-
         </LinearGradient>
     )
 }
