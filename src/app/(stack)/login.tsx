@@ -1,13 +1,36 @@
+import { Pressable, Text, View, Alert } from 'react-native'
+import { useState } from 'react'
+
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
-import React from 'react'
-import { Pressable, Text, View } from 'react-native'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
 import { Input } from '@/components/input'
+
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
 export default function Login() {
     const router = useRouter()
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleLogin = async () => {
+        try {
+            signInWithEmailAndPassword(getAuth(), email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user
+                    console.log(user)
+                })
+            setEmail("")
+            setPassword("")
+            router.push('/overview')
+        } catch (error) {
+            console.log(error)
+            Alert.alert("Erro", "Não foi possível fazer login. Por favor, tente novamente.")
+        }
+    }
 
     return (
         <LinearGradient
@@ -44,10 +67,11 @@ export default function Login() {
                 </Pressable>
             </View>
 
-            <Button title='Login' onPress={() => router.push("/overview")} />
+            <Button title='Login' onPress={() => handleLogin()} />
 
             <View className='flex-row justify-center mt-4'>
                 <Text className='font-regular text-gray-200'>Ainda não possui uma conta? </Text>
+
                 <Pressable onPress={() => router.push("/signup")}>
                     <Text className='font-bold underline text-gray-200'>Registrar-se</Text>
                 </Pressable>

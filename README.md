@@ -29,8 +29,6 @@ Seja bem-vindo ao Anallyzer, um app focado em análise de campanhas de e-mail ma
 
 <h2 id="started">🚀 Começando</h2>
 
-Aqui teremos instruções de como rodar e abrir o projeto!
-
 <h3>Pré-requisitos</h3>
 
 ![node](https://img.shields.io/badge/NODE.JS-black?style=for-the-badge&logo=nodedotjs&logoColor=green)
@@ -49,7 +47,7 @@ git clone https://github.com/nichol6s/anallyzer-app.git
 #Entrando na pasta
 cd anallyzer-app
 
-# Instale as dependências:
+#Instale as dependências:
 npm install
 
 #Rode o projeto expo:
@@ -63,17 +61,17 @@ Temos duas formas de abrir o projeto:
 
   ```bash
   #Depois de rodar o comando: npx expo start
-  #Pressione a letra a no terminal e ele irá abrir o emulador do android studio
+  #Pressione a letra "A" no terminal e ele irá abrir o projeto no emulador do android studio
   ```
 - Expo Go 
   ```bash
-  #Instale o app Expo Go
+  #Instale o app "Expo Go" no seu celular
   #Escaneie o QRCode que aparece no terminal
   ```
   
 <h2 id="colab">🤝 Colaboradores</h2>
 
-Special thank you for all people that contributed for this project.
+Agradecimentos especiais por todas as pessoas que contribuiram neste projeto.
 
 <table>
     <td align="center">
