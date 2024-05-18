@@ -1,18 +1,10 @@
 import React from "react"
-import { View, Text, Pressable, PressableProps } from "react-native"
+import { View, Text, Pressable } from "react-native"
+import { CAMPAIGNS_DATA } from "@/utils/data/campaigns"
+import { useRouter } from "expo-router"
 
 type Props1 = {
     children: React.ReactNode
-}
-
-type Props2 = {
-    title: string,
-    date: string,
-    clicks: number,
-}
-
-type Props3 = PressableProps & {
-    title: string
 }
 
 function CampaignCard({ children }: Props1) {
@@ -23,28 +15,35 @@ function CampaignCard({ children }: Props1) {
     )
 }
 
-function Content({ title, date, clicks }: Props2) {
+function Content({ title }: { title: string }) {
+    const campaign = CAMPAIGNS_DATA.find(campaign => campaign.title === title)
+
     return (
-        <View>
-            <Text className="text-xl font-mediumj mb-10">{title}</Text>
+        <View className="w-full">
+            <Text className="text-xl font-mediumj mb-10">{campaign?.title}</Text>
 
             <View className="flex-row justify-between mb-6">
-                <Text className="text-lg font-mediumj">{date}</Text>
-                <Text className="text-lg font-mediumj">{clicks}</Text>
+                <Text className="text-lg font-mediumj">{campaign?.data[0].date}</Text>
+                <Text className="text-lg font-mediumj">{campaign?.data[0].clicks}</Text>
             </View>
         </View>
     )
 
 }
 
-function Button({ title, ...rest }: Props3) {
-    return (
-        <Pressable className="w-full h-[50] px-[19] py-[14] bg-purple items-center justify-center rounded-full active:opacity-70" {...rest} >
-            <Text className="text-black text-sm font-mediumj"> {title} </Text>
-        </Pressable>
-    )
+
+interface ButtonProps {
+    id: number
 }
 
+const Button: React.FC<ButtonProps> = ({ id, ...rest }) => {
+    const router = useRouter();
+    return (
+        <Pressable className="w-full h-[50px] px-[19px] py-[14px] bg-purple items-center justify-center rounded-full active:opacity-70" onPress={() => router.push(`/campaign/${id}`)} {...rest}>
+            <Text className="text-black text-sm font-medium">Gerar análise</Text>
+        </Pressable>
+    );
+}
 CampaignCard.Content = Content
 CampaignCard.Button = Button
 
