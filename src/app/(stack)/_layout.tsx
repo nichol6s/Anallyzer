@@ -11,7 +11,6 @@ export default function StackLayout() {
             <Stack.Screen name="forgot-password" />
             <Stack.Screen name="verify-code" />
             <Stack.Screen name="new-password" />
-            <Stack.Screen name="campaign" />
         </Stack>
     )
 }

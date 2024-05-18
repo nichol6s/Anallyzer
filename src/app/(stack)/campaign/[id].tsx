@@ -1,14 +1,19 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
 
-import { useRouter } from 'expo-router'
+import { useRouter, useLocalSearchParams } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
 
 import Arrow from '@/components/arrow-back'
 import { Graph } from '@/components/graphs'
+import { CAMPAIGNS_DATA, CampaignDataProps } from '@/utils/data/campaigns'
 
 export default function Campaign() {
     const router = useRouter()
+    const { id } = useLocalSearchParams()
+
+    const campaign = CAMPAIGNS_DATA.find((campaign: CampaignDataProps) => campaign.id === Number(id))
+    const { clicks, clicksFeedback, opens, opensFeedback, sends, sendsFeedback, leads, leadsFeedback, growth } = campaign?.data[0] || {};
 
     return (
         <LinearGradient
@@ -24,55 +29,47 @@ export default function Campaign() {
 
 
                 <View className='items-left'>
-                    <Text className='text-2xl font-mediumj'>Novidades da Semana: Camp...</Text>
+                    <Text className='text-2xl font-mediumj'>{campaign?.title}</Text>
                 </View>
 
                 <View className='mt-6 gap-4'>
                     <Graph.LargeGraph
-                        quantity={33.889}
+                        quantity={clicks ?? 0}
                         title="Clicks"
-                        percentage="+2,5%"
+                        percentage={growth?.clicks.toString() ?? '0'}
                     />
 
-                    <Text className='text-sm font-light text-gray-200'>
-                        Parabéns pelo aumento de 4,5% nos cliques em relação ao esperado! Isso indica que sua campanha conseguiu atrair a atenção dos destinatários e incentivá-los a interagir com seu conteúdo.
-                    </Text>
+                    <Text className='text-sm font-light text-gray-200'>{clicksFeedback}</Text>
                 </View>
 
                 <View className='mt-6 gap-4'>
                     <Graph.LargeGraph
-                        quantity={56.644}
+                        quantity={opens ?? 0}
                         title="Aberturas"
-                        percentage="+2%"
+                        percentage={growth?.opens.toString() ?? '0'}
                     />
 
-                    <Text className='text-sm font-light text-gray-200'>
-                        Esse aumento de 2% mostra que sua linha de assunto e pré-visualização estão chamando a atenção do público-alvo. Sua campanha está despertanto interesse, parabéns!
-                    </Text>
+                    <Text className='text-sm font-light text-gray-200'> {opensFeedback} </Text>
                 </View>
 
                 <View className='mt-6 gap-4'>
                     <Graph.LargeGraph
-                        quantity={86.644}
+                        quantity={sends ?? 0}
                         title="Envios"
-                        percentage="+0,5%"
+                        percentage={growth?.sends.toString() ?? '0'}
                     />
 
-                    <Text className='text-sm font-light text-gray-200'>
-                        Embora o crescimento de 0,5% nos envios seja modesto, é encorajador ver que sua campanha está alcançando um número maior de destinatários do que o esperado.
-                    </Text>
+                    <Text className='text-sm font-light text-gray-200'> {sendsFeedback} </Text>
                 </View>
 
                 <View className='mt-6 gap-4'>
                     <Graph.LargeGraph
-                        quantity={1.678}
+                        quantity={leads ?? 0}
                         title="Leads"
-                        percentage="-38%"
+                        percentage={growth?.leads.toString() ?? '0'}
                     />
 
-                    <Text className='text-sm font-light text-gray-200'>
-                        Apesar da diminuição de 38% no número de leads, é importante analisar os motivos por trás disso. Revise sua oferta ou conteúdo para garantir que esteja alinhado com as expectativas e necessidades do seu público-alvo.
-                    </Text>
+                    <Text className='text-sm font-light text-gray-200'> {leadsFeedback} </Text>
                 </View>
 
                 <View className='mt-6 gap-4'>
