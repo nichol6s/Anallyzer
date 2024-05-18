@@ -13,7 +13,7 @@ export default function Dashboard() {
     <LinearGradient
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
-      end={[0, 1]}
+      end={[0, 0.5]}
       className="flex-1 p-6"
     >
 
