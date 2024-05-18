@@ -47,22 +47,24 @@ type LargeGraphProps = {
     percentage: string
 }
 
-function LargeGraph({ quantity, title, percentage }: LargeGraphProps) {
+const LargeGraph: React.FC<LargeGraphProps> = ({ quantity, title, percentage }) => {
     return (
-        <View className="w-[302] h-[111] rounded-3xl bg-white px-7 py-4 gap-2">
-            <Text className="font-semibold text-2xl"> {quantity.toFixed(3)} </Text>
-
-            <Text className="font-semibold text-sm"> {title} </Text>
-
+        <View className="w-[302px] h-[111px] rounded-3xl bg-white px-7 py-4 gap-2">
+            <Text className="font-semibold text-2xl">{quantity}</Text>
+            <Text className="font-semibold text-sm">{title}</Text>
             {percentage && (
                 <Text className={`font-semibold text-sm ${percentage.includes('+') ? 'text-green' : 'text-red'}`}>
                     {percentage}
-                    <AntDesign name={percentage.includes('+') ? "arrowup" : "arrowdown"} size={12} color={percentage.includes('+') ? colors.green : colors.red} />
+                    <AntDesign
+                        name={percentage.includes('+') ? 'arrowup' : 'arrowdown'}
+                        size={12}
+                        color={percentage.includes('+') ? colors.green : colors.red}
+                    />
                 </Text>
             )}
         </View>
-    )
-}
+    );
+};
 
 function SalesFigures() {
     return <SalesFigureSvg />

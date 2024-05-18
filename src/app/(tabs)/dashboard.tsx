@@ -1,15 +1,14 @@
 import React from 'react'
 import { Text, View, ScrollView } from 'react-native'
-import { useRouter } from 'expo-router'
+
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { SearchBar } from '@/components/search-bar'
 import { CampaignCard } from '@/components/recent-campaigns'
 import { Ionicons } from '@expo/vector-icons'
+import { CAMPAIGNS_DATA, CampaignDataProps } from '@/utils/data/campaigns'
 
 export default function Dashboard() {
-  const router = useRouter()
-
   return (
     <LinearGradient
       colors={['#DAD5FB', '#FFF']}
@@ -30,44 +29,13 @@ export default function Dashboard() {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ gap: 12 }}>
-        <CampaignCard>
-          <CampaignCard.Content
-            title='Novidades da semana: Campanh...'
-            date='12 Dez, 2023'
-            clicks={33.889}
-          />
-          <CampaignCard.Button title='Gerar análise' onPress={() => router.push("/campaign")} />
-        </CampaignCard>
-
-        <CampaignCard>
-          <CampaignCard.Content
-            title='Cupons Exclusivos: Aproveit...'
-            date='19 Ago, 2016'
-            clicks={31.889}
-          />
-          <CampaignCard.Button title='Gerar análise' />
-        </CampaignCard>
-
-        <CampaignCard>
-          <CampaignCard.Content
-            title='Super oferta: 70% de descont...'
-            date='26 Mai, 2021'
-            clicks={22.489}
-          />
-          <CampaignCard.Button title='Gerar análise' />
-        </CampaignCard>
-
-        <CampaignCard>
-          <CampaignCard.Content
-            title='Black Friday chegando: Prepar...'
-            date='22 Set, 2022'
-            clicks={13.889}
-          />
-          <CampaignCard.Button title='Gerar análise' />
-        </CampaignCard>
-
+        {CAMPAIGNS_DATA.map((campaign: CampaignDataProps) => (
+          <CampaignCard key={campaign.id}>
+            <CampaignCard.Content title={campaign.title} />
+            <CampaignCard.Button id={campaign.id} />
+          </CampaignCard>
+        ))}
       </ScrollView>
-
     </LinearGradient>
   )
 }
