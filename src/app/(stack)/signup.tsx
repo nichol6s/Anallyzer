@@ -24,15 +24,13 @@ export default function Signup() {
 
     async function handleSignup() {
         console.log("Handle Signup called!")
+        setIsLoading(true)
         try {
             if (!name.trim() || !email.trim() || !password.trim()) {
                 Alert.alert("Inscrição", "Preencha todos os campos!")
                 setSubmit(false)
                 return
             }
-
-            setIsLoading(true)
-
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
 
@@ -41,6 +39,8 @@ export default function Signup() {
                 email
             })
             console.log(user)
+
+            setIsLoading(false)
 
             Alert.alert("Sucesso", "Conta criada com sucesso.", [
                 {

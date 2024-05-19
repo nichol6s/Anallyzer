@@ -23,15 +23,13 @@ export default function Login() {
     async function handleLogin() {
         console.log("Email: ", email);
         console.log("Password: ", password);
+        setIsLoading(true);
         try {
             if (!email.trim() || !password.trim()) {
                 Alert.alert("Login", "Preencha todos os campos!");
                 setSubmit(false);
                 return;
             }
-
-            setIsLoading(true);
-
             const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
             const user = userCredential.user;
             console.log(user);
@@ -42,6 +40,7 @@ export default function Login() {
                     onPress: () => router.push('/overview')
                 }
             ]);
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
             setIsLoading(false);
