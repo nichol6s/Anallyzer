@@ -6,35 +6,40 @@ import { useRouter } from 'expo-router'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
-import { Input } from '@/components/input'
+import Input from '@/components/input'
 
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db, doc, setDoc } from '@/services/firebase'
+import { auth, db } from '@/services/firebase'
+import { doc, setDoc } from 'firebase/firestore'
 
 export default function Signup() {
     const router = useRouter()
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleSignup = async () => {
+
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
 
-            // Após a criação do usuário, armazena o nome no Firestore
-            await setDoc(doc(db, "users", user.uid), {
+            await setDoc(doc(db, 'users', user.uid), {
                 name,
-            });
+                email
+            })
+            console.log(user)
 
-            // Limpa os campos e redireciona para a tela de login
-            setName("");
-            setEmail("");
-            setPassword("");
-            router.push('/login');
+            Alert.alert("Sucesso", "Conta criada com sucesso.", [
+                {
+                    text: "OK",
+                    onPress: () => router.push('/login')
+                }
+            ])
+
         } catch (error) {
-            console.error(error)
+            console.log(error);
             Alert.alert('Erro', 'Não foi possível criar a conta. Por favor, tente novamente.');
         }
     }
@@ -43,7 +48,7 @@ export default function Signup() {
         <LinearGradient
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
-            end={[0, 1]}
+            end={[0, 0.6]}
             className="flex-1 p-6"
         >
             <View className='items-left mt-16'>
@@ -57,36 +62,31 @@ export default function Signup() {
             <View className='items-left mt-10 gap-4 mb-4'>
                 <Text className='font-medium'>Nome da empresa</Text>
 
-                <Input>
-                    <Input.Field
-                        placeholder='Digite o nome da empresa'
-                        value={name}
-                        onChangeText={(value) => setName(value)}
-                    />
-                </Input>
+                <Input
+                    placeholder='Digite o nome da empresa'
+                    value={name}
+                    onChangeText={(value) => setName(value)}
+                />
             </View>
 
             <View className='gap-4 mb-4'>
                 <Text className='font-medium'>Email</Text>
-                <Input>
-                    <Input.Field
-                        placeholder='Digite seu e-mail'
-                        value={email}
-                        onChangeText={(value) => setEmail(value)}
-                    />
-                </Input>
+
+                <Input
+                    placeholder='Digite seu e-mail'
+                    value={email}
+                    onChangeText={(value) => setEmail(value)}
+                />
             </View>
 
             <View className='gap-4 mb-12'>
                 <Text className='font-medium'>Senha</Text>
-                <Input>
-                    <Input.Field
-                        placeholder='Digite sua senha'
-                        value={password}
-                        onChangeText={(value) => setPassword(value)}
-                        textContentType='password'
-                    />
-                </Input>
+
+                <Input
+                    placeholder='Digite sua senha'
+                    value={password}
+                    onChangeText={(value) => setPassword(value)}
+                />
             </View>
 
             <Button title='Criar conta' onPress={() => handleSignup()} />

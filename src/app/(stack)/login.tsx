@@ -6,15 +6,15 @@ import { useRouter } from 'expo-router'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
-import { Input } from '@/components/input'
+import Input from '@/components/input'
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 export default function Login() {
     const router = useRouter()
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleLogin = async () => {
         try {
@@ -23,9 +23,12 @@ export default function Login() {
                     const user = userCredential.user
                     console.log(user)
                 })
-            setEmail("")
-            setPassword("")
-            router.push('/overview')
+            Alert.alert("Sucesso", "Login realizado com sucesso.", [
+                {
+                    text: "OK",
+                    onPress: () => router.push('/overview')
+                }
+            ])
         } catch (error) {
             console.log(error)
             Alert.alert("Erro", "Não foi possível fazer login. Por favor, tente novamente.")
@@ -49,16 +52,22 @@ export default function Login() {
 
             <View className='gap-4 mb-5'>
                 <Text className='font-medium'>Email</Text>
-                <Input>
-                    <Input.Field placeholder='Digite seu email' />
-                </Input>
+
+                <Input
+                    placeholder='Digite seu email'
+                    value={email}
+                    onChangeText={(value) => setEmail(value)}
+                />
             </View>
 
             <View className='gap-4 mb-3'>
                 <Text className='font-medium'>Senha</Text>
-                <Input>
-                    <Input.Field placeholder='Digite sua senha' />
-                </Input>
+
+                <Input
+                    placeholder='Digite sua senha'
+                    value={password}
+                    onChangeText={(value) => setPassword(value)}
+                />
             </View>
 
             <View className='w-full items-end mb-9'>
