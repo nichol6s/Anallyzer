@@ -1,39 +1,61 @@
+import { useState, useEffect } from 'react'
 import { Pressable, Text, View, Alert } from 'react-native'
-import { useState } from 'react'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
-import Input from '@/components/input'
+import { Input } from '@/components/input'
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
 
 export default function Login() {
     const router = useRouter()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [submit, setSubmit] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-    const handleLogin = async () => {
+    async function handleLogin() {
+        console.log("Email: ", email);
+        console.log("Password: ", password);
         try {
-            signInWithEmailAndPassword(getAuth(), email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user
-                    console.log(user)
-                })
+            if (!email.trim() || !password.trim()) {
+                Alert.alert("Login", "Preencha todos os campos!");
+                setSubmit(false);
+                return;
+            }
+
+            setIsLoading(true);
+
+            const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
+            const user = userCredential.user;
+            console.log(user);
+
             Alert.alert("Sucesso", "Login realizado com sucesso.", [
                 {
                     text: "OK",
                     onPress: () => router.push('/overview')
                 }
-            ])
+            ]);
         } catch (error) {
-            console.log(error)
-            Alert.alert("Erro", "Não foi possível fazer login. Por favor, tente novamente.")
+            console.log(error);
+            setIsLoading(false);
+            Alert.alert("Erro", "Não foi possível fazer login. Por favor, tente novamente.");
+        } finally {
+            setSubmit(false);
         }
     }
+
+    useEffect(() => {
+        if (submit) {
+            handleLogin();
+        }
+    }, [submit])
 
     return (
         <LinearGradient
@@ -49,43 +71,49 @@ export default function Login() {
             <View className='my-[30px]'>
                 <Text className='text-4xl font-medium tracking-tight leading-[44px]'>Login</Text>
             </View>
+            <KeyboardAwareScrollView>
 
-            <View className='gap-4 mb-5'>
-                <Text className='font-medium'>Email</Text>
+                <View className='gap-4 mb-5'>
+                    <Text className='font-medium'>Email</Text>
 
-                <Input
-                    placeholder='Digite seu email'
-                    value={email}
-                    onChangeText={(value) => setEmail(value)}
-                />
-            </View>
+                    <Input>
+                        <Input.Field
+                            placeholder="Digite seu e-mail"
+                            value={email}
+                            onChangeText={(text) => setEmail(text)}
+                        />
+                    </Input>
+                </View>
 
-            <View className='gap-4 mb-3'>
-                <Text className='font-medium'>Senha</Text>
+                <View className='gap-4 mb-3'>
+                    <Text className='font-medium'>Senha</Text>
 
-                <Input
-                    placeholder='Digite sua senha'
-                    value={password}
-                    onChangeText={(value) => setPassword(value)}
-                />
-            </View>
+                    <Input>
+                        <Input.Field
+                            placeholder="Digite sua senha"
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
+                            secureTextEntry={true}
+                        />
+                    </Input>
+                </View>
 
-            <View className='w-full items-end mb-9'>
-                <Pressable onPress={() => router.push("/forgot-password")}>
-                    <Text className='font-bold underline text-gray-200'> Esqueceu a senha?</Text>
-                </Pressable>
-            </View>
+                <View className='w-full items-end mb-9'>
+                    <Pressable onPress={() => router.push("/forgot-password")}>
+                        <Text className='font-bold underline text-gray-200'> Esqueceu a senha?</Text>
+                    </Pressable>
+                </View>
 
-            <Button title='Login' onPress={() => handleLogin()} />
+                <Button title='Login' onPress={() => setSubmit(true)} isLoading={isLoading} />
 
-            <View className='flex-row justify-center mt-4'>
-                <Text className='font-regular text-gray-200'>Ainda não possui uma conta? </Text>
+                <View className='flex-row justify-center mt-4'>
+                    <Text className='font-regular text-gray-200'>Ainda não possui uma conta? </Text>
 
-                <Pressable onPress={() => router.push("/signup")}>
-                    <Text className='font-bold underline text-gray-200'>Registrar-se</Text>
-                </Pressable>
-            </View>
-
+                    <Pressable onPress={() => router.push("/signup")}>
+                        <Text className='font-bold underline text-gray-200'>Registrar-se</Text>
+                    </Pressable>
+                </View>
+            </KeyboardAwareScrollView>
         </LinearGradient>
     )
 }
