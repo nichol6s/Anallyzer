@@ -1,10 +1,9 @@
-import { TextInput, TextInputProps, View } from "react-native"
-
-import { colors } from "../styles/colors"
+import { View, TextInput, TextInputProps } from "react-native";
+import { colors } from "@/styles/colors";
 
 function Input({ children }: { children: React.ReactNode }) {
     return (
-        <View className="w-full h-[50px] flex-row items-center gap-3 pl-6 border border-gray-100 rounded-[16px]">
+        <View className="w-full h-[50] flex-row items-center gap-3 pl-6 border border-gray-100 rounded-[16]">
             {children}
         </View>
     )
@@ -20,7 +19,5 @@ function Field({ ...rest }: TextInputProps) {
     )
 }
 
-Input.Field = Field
-
-export { Input }
-
+Input.Field = Field;
+export { Input };
