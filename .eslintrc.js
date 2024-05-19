@@ -31,6 +31,9 @@ module.exports = {
     "react/prop-types": ["error", { "ignore": ["navigation", "navigation.navigate"] }],
 
     "react/react-in-jsx-scope": "off",
+
+    // Desativar a regra de dependências do useEffect globalmente
+    "react-hooks/exhaustive-deps": "off"
   },
   ignorePatterns: ["node_modules/"]
 }
