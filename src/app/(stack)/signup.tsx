@@ -29,6 +29,7 @@ export default function Signup() {
             if (!name.trim() || !email.trim() || !password.trim()) {
                 Alert.alert("Inscrição", "Preencha todos os campos!")
                 setSubmit(false)
+                setIsLoading(false)
                 return
             }
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
