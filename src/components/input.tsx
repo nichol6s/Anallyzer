@@ -3,7 +3,7 @@ import { colors } from "@/styles/colors";
 
 function Input({ children }: { children: React.ReactNode }) {
     return (
-        <View className="w-full h-[50] flex-row items-center gap-3 pl-6 border border-gray-100 rounded-[16]">
+        <View className="w-full h-[50] flex-row items-center gap-3 px-6 border border-gray-100 rounded-[16]">
             {children}
         </View>
     )

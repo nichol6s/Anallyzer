@@ -49,7 +49,7 @@ type LargeGraphProps = {
 
 const LargeGraph: React.FC<LargeGraphProps> = ({ quantity, title, percentage }) => {
     return (
-        <View className="w-[302px] h-[111px] rounded-3xl bg-white px-7 py-4 gap-2">
+        <View className="w-[302px] h-[111px] border-2 border-[#E9E6F7] rounded-3xl bg-white px-7 py-4 gap-2">
             <Text className="font-semibold text-2xl">{quantity}</Text>
             <Text className="font-semibold text-sm">{title}</Text>
             {percentage && (
