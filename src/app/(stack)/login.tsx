@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
+import { Ionicons } from '@expo/vector-icons'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
@@ -19,6 +20,7 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const [submit, setSubmit] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [passwordVisible, setPasswordVisible] = useState(false)
 
     async function handleLogin() {
         console.log("Email: ", email);
@@ -89,11 +91,18 @@ export default function Login() {
 
                     <Input>
                         <Input.Field
-                            placeholder="Digite sua senha"
+                            placeholder='Digite sua senha'
                             value={password}
                             onChangeText={(text) => setPassword(text)}
-                            secureTextEntry={true}
+                            secureTextEntry={!passwordVisible}
                         />
+                        <Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
+                            <Ionicons
+                                name={passwordVisible ? 'eye' : 'eye-off'}
+                                size={24}
+                                color='#000'
+                            />
+                        </Pressable>
                     </Input>
                 </View>
 
