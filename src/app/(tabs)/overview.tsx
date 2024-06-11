@@ -12,7 +12,7 @@ export default function Overview() {
       colors={['#DAD5FB', '#FFF']}
       start={[0, 0]}
       end={[0, 1]}
-      className="flex-1 px-[15] py-[15]"
+      className="flex-1 px-[15] pb-[15]"
     >
       <ScrollView showsVerticalScrollIndicator={false}>
 

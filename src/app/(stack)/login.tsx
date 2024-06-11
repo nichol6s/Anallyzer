@@ -72,7 +72,7 @@ export default function Login() {
             <View className='my-[30px]'>
                 <Text className='text-4xl font-medium tracking-tight leading-[44px]'>Login</Text>
             </View>
-            <KeyboardAwareScrollView>
+            <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
 
                 <View className='gap-4 mb-5'>
                     <Text className='font-medium'>Email</Text>

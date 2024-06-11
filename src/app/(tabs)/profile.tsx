@@ -12,21 +12,21 @@ export default function Profile() {
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
             end={[0, 0.7]}
-            className="flex-1 py-16"
+            className="flex-1 py-8"
         >
 
             <View className="w-full">
                 <Image className="w-full " source={require("@/assets/profile-cover.png")} />
-                <LinearGradient
+                {/* <LinearGradient
                     colors={['#DAD5Fb', 'transparent']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 0, y: 0.7 }}
                     className="w-full h-52 absolute top-0"
-                />
+                /> */}
             </View>
 
             <View className="w-full px-9">
-                <View className="-mt-9 mb-4">
+                <View className="-mt-12 mb-4">
                     <AvatarImage />
                 </View>
 
