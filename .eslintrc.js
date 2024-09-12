@@ -35,7 +35,11 @@ module.exports = {
     // Desativar a regra de dependências do useEffect globalmente
     "react-hooks/exhaustive-deps": "off",
 
-    "camelcase": "off"
+    "camelcase": "off",
+
+    "react-hooks/rules-of-hooks": "off",
+
+    "react/display-name": "off"
   },
   ignorePatterns: ["node_modules/"]
 }

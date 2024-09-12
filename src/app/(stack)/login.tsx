@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Pressable, Text, View, Alert } from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Pressable, Text, View, Alert, ScrollView } from 'react-native'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
@@ -30,6 +30,7 @@ export default function Login() {
             if (!email.trim() || !password.trim()) {
                 Alert.alert("Login", "Preencha todos os campos!");
                 setSubmit(false);
+                setIsLoading(false)
                 return;
             }
             const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
@@ -62,8 +63,8 @@ export default function Login() {
         <LinearGradient
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
-            end={[0, 1]}
-            className="flex-1 p-6"
+            end={[0, 1.2]}
+            className="p-6"
         >
             <View className='items-left mt-16'>
                 <Arrow onPress={() => router.back()} />
@@ -72,7 +73,7 @@ export default function Login() {
             <View className='my-[30px]'>
                 <Text className='text-4xl font-medium tracking-tight leading-[44px]'>Login</Text>
             </View>
-            <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+            <View>
 
                 <View className='gap-4 mb-5'>
                     <Text className='font-medium'>Email</Text>
@@ -121,7 +122,7 @@ export default function Login() {
                         <Text className='font-bold underline text-gray-200'>Registrar-se</Text>
                     </Pressable>
                 </View>
-            </KeyboardAwareScrollView>
+            </View>
         </LinearGradient>
     )
 }

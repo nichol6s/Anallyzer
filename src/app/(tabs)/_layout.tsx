@@ -1,9 +1,9 @@
-import { Octicons, Feather, Entypo } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Octicons, Feather, Entypo } from '@expo/vector-icons'
+import { Tabs } from 'expo-router'
 
+import React from 'react'
 
-import React from "react"
-
+// prettier-ignore
 export default function TabsLayout() {
     return (
         <Tabs screenOptions={{ headerShown: false, tabBarLabel: () => false, tabBarActiveTintColor: "black", tabBarInactiveTintColor: "gray" }} >
@@ -11,6 +11,7 @@ export default function TabsLayout() {
                 name="overview"
                 options={{
                     tabBarIcon: ({ color }) => <Octicons name="home" size={22} color={color} />,
+
                 }}
             />
             <Tabs.Screen
