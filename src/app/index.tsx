@@ -33,7 +33,7 @@ export default function Welcome() {
                 </Text>
             </View>
 
-            <View className='items-center'>
+            <View className='items-center mt-8'>
                 <Button title='Junte-se a nós!' onPress={() => router.push("/signup")} />
             </View>
 
