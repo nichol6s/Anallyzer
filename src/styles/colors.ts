@@ -11,4 +11,4 @@ export const colors = {
     red: "#FC5A5A",
     purple: "#BFB7FD"
 
-}
+}    

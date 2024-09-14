@@ -8,7 +8,7 @@
   "quoteProps": "as-needed",
   "semi": false,
   "singleQuote": true,
-  "tabWidth": 2,
+  "tabWidth": 4,
   "useTabs": false,
   "trailingComma": "es5",
   "endOfLine": "auto"

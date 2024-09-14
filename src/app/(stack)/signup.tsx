@@ -70,7 +70,7 @@ export default function Signup() {
         <LinearGradient
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
-            end={[0, 0.6]}
+            end={[0, 1]}
             className="flex-1 p-6"
         >
             <View className='items-left mt-16'>
