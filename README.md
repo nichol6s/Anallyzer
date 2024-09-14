@@ -16,7 +16,7 @@
 <p align="center">
   <a href="#about">Sobre</a> • 
   <a href="#started">Começando</a> • 
-  <a href="#colab">Collaborators</a>
+  <a href="#colab">Colaboradores</a>
 </p>
 
 ![alt img](src/assets/anallyzer-cover.png)
