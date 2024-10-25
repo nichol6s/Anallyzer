@@ -12,5 +12,5 @@
 	"useTabs": true,
 	"trailingComma": "es5",
 	"endOfLine": "auto",
-	"prettier.singleAttributePerLine": true
+	"singleAttributePerLine": true
 }
