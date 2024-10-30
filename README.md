@@ -24,6 +24,7 @@
 <h2 id="about">📌 Sobre</h2>
 
 Seja bem-vindo ao Anallyzer, um app focado em análise de campanhas de e-mail marketing.
+Neste projeto estamos consumindo a API do Firebase(Auth e Firestore Database) para login e criação de conta. É um app que conta com 5 telas funcionais e navegáveis
 
 [![figma][FIGMA_BADGE]][FIGMA_URL]
 

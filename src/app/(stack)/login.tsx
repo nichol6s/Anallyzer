@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import { Pressable, Text, View, Alert, ScrollView } from 'react-native'
+import { useEffect, useState } from 'react'
+import { Alert, Pressable, Text, View } from 'react-native'
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
+import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useRouter } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons'
 
 import Arrow from '@/components/arrow-back'
 import Button from '@/components/button'
@@ -63,8 +63,8 @@ export default function Login() {
         <LinearGradient
             colors={['#DAD5FB', '#FFF']}
             start={[0, 0]}
-            end={[0, 1.2]}
-            className="p-6"
+            end={[0, 1]}
+            className="flex-1 p-6"
         >
             <View className='items-left mt-16'>
                 <Arrow onPress={() => router.back()} />
