@@ -372,11 +372,12 @@ export default function Profile() {
 								/>
 							</Pressable>
 						</View>
-						<Input>
+						<Input variant="large">
 							<Input.Field
 								value={tempAbout}
 								onChangeText={setTempAbout}
 								placeholder="Digite uma breve descrição"
+								multiline
 								maxLength={600}
 								numberOfLines={8}
 								onSubmitEditing={() => {

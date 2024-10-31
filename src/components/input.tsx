@@ -1,9 +1,18 @@
 import { View, TextInput, TextInputProps } from "react-native"
 import { colors } from "@/styles/colors"
 
-function Input({ children }: { children: React.ReactNode }) {
+type InputProps = {
+	children: React.ReactNode
+	variant?: "default" | "large"
+}
+
+function Input({ children, variant = "default" }: InputProps) {
+	const containerHeight = variant === "large" ? "h-[70px]" : "h-[50px]"
+
 	return (
-		<View className="w-full h-[80] flex-row items-center gap-3 px-6 border border-gray-100 rounded-[16]">
+		<View
+			className={`w-full ${containerHeight} flex-row items-center gap-3 px-6 border border-gray-100 rounded-[16px]`}
+		>
 			{children}
 		</View>
 	)
