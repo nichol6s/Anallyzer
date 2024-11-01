@@ -1,7 +1,7 @@
-import { Octicons, Feather, Entypo } from '@expo/vector-icons'
-import { Tabs } from 'expo-router'
+import { Octicons, Feather, Entypo } from "@expo/vector-icons"
+import { Tabs } from "expo-router"
 
-import React from 'react'
+import React from "react"
 
 // prettier-ignore
 export default function TabsLayout() {

@@ -4,6 +4,8 @@ import { View, Text, Image, Pressable, Alert, Modal } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { MaterialCommunityIcons, Octicons, Feather, AntDesign } from "@expo/vector-icons"
 import * as ImagePicker from "expo-image-picker"
+import { useNavigation } from "expo-router"
+import { DrawerActions } from "@react-navigation/native"
 
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
@@ -31,6 +33,8 @@ interface CompanyData {
 }
 
 export default function Profile() {
+	const navigation = useNavigation()
+
 	const [companyData, setCompanyData] = useState<CompanyData>({
 		name: "",
 		category: "",
@@ -131,6 +135,19 @@ export default function Profile() {
 			end={[0, 0.4]}
 			className="flex-1 py-8"
 		>
+			<View className="w-full px-4 flex-row justify-end absolute top-8 z-10">
+				<Pressable
+					onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+					className="p-2 active:opacity-70"
+				>
+					<Feather
+						name="menu"
+						size={24}
+						color="black"
+					/>
+				</Pressable>
+			</View>
+
 			<View className="w-full">
 				<Image
 					className="w-full"
