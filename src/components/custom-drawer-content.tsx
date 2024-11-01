@@ -10,7 +10,7 @@ export default function CustomDrawerContent() {
 	const handleSignOut = async () => {
 		try {
 			await signOut(auth)
-			router.replace("/(stack)/login")
+			router.replace("/")
 		} catch (error) {
 			console.error("Error signing out:", error)
 		}
@@ -18,7 +18,7 @@ export default function CustomDrawerContent() {
 
 	return (
 		<View className="flex-1">
-			<View className="absolute bottom-12 w-full px-4">
+			<View className="absolute bottom-20 w-full px-4">
 				<Pressable
 					onPress={handleSignOut}
 					className="flex-row items-center gap-2 p-4 active:opacity-70"
