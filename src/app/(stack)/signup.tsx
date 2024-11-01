@@ -21,16 +21,27 @@ export default function Signup() {
 	const [password, setPassword] = useState("")
 	const [submit, setSubmit] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
+	const [errors, setErrors] = useState({
+		name: "",
+		email: "",
+		password: "",
+	})
 
 	async function handleSignup() {
 		setIsLoading(true)
+
+		let newErrors = { name: "", email: "", password: "" }
+		if (!name.trim()) newErrors.name = "Digite o nome da empresa"
+		if (!email.trim()) newErrors.email = "Digite seu e-mail"
+		if (!password.trim()) newErrors.password = "Digite uma senha"
+
+		if (newErrors.name || newErrors.email || newErrors.password) {
+			setErrors(newErrors)
+			setIsLoading(false)
+			return
+		}
+
 		try {
-			if (!name.trim() || !email.trim() || !password.trim()) {
-				Alert.alert("Inscrição", "Preencha todos os campos!")
-				setSubmit(false)
-				setIsLoading(false)
-				return
-			}
 			const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 			const user = userCredential.user
 
@@ -46,13 +57,14 @@ export default function Signup() {
 			})
 
 			router.push("/login")
-			setIsLoading(false)
 		} catch (error) {
 			console.log(error)
-			setIsLoading(false)
-			Alert.alert("Erro", "Não foi possível criar a conta. Por favor, tente novamente.")
+			setErrors((prev) => ({
+				...prev,
+				email: "Não foi possível criar a conta. Por favor, tente novamente.",
+			}))
 		} finally {
-			setSubmit(false)
+			setIsLoading(false)
 		}
 	}
 
@@ -82,11 +94,17 @@ export default function Signup() {
 				<View className="items-left mt-10 gap-4 mb-4">
 					<Text className="font-medium">Nome da empresa</Text>
 
-					<Input>
+					<Input
+						hasError={!!errors.name}
+						errorMessage={errors.name}
+					>
 						<Input.Field
 							placeholder="Digite o nome da empresa"
 							value={name}
-							onChangeText={(text) => setName(text)}
+							onChangeText={(text) => {
+								setName(text)
+								setErrors((prev) => ({ ...prev, name: "" }))
+							}}
 						/>
 					</Input>
 				</View>
@@ -94,11 +112,17 @@ export default function Signup() {
 				<View className="gap-4 mb-4">
 					<Text className="font-medium">Email</Text>
 
-					<Input>
+					<Input
+						hasError={!!errors.email}
+						errorMessage={errors.email}
+					>
 						<Input.Field
 							placeholder="Digite seu e-mail"
 							value={email}
-							onChangeText={(text) => setEmail(text)}
+							onChangeText={(text) => {
+								setEmail(text)
+								setErrors((prev) => ({ ...prev, email: "" }))
+							}}
 							keyboardType="email-address"
 						/>
 					</Input>
@@ -107,11 +131,17 @@ export default function Signup() {
 				<View className="gap-4 mb-12">
 					<Text className="font-medium">Senha</Text>
 
-					<Input>
+					<Input
+						hasError={!!errors.password}
+						errorMessage={errors.password}
+					>
 						<Input.Field
 							placeholder="Digite sua senha"
 							value={password}
-							onChangeText={(text) => setPassword(text)}
+							onChangeText={(text) => {
+								setPassword(text)
+								setErrors((prev) => ({ ...prev, password: "" }))
+							}}
 							secureTextEntry={true}
 						/>
 					</Input>

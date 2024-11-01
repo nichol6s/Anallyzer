@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Alert, Pressable, Text, View } from "react-native"
-import { KeyboardAvoidingView, Platform } from "react-native"
 
 import { Ionicons } from "@expo/vector-icons"
 import { LinearGradient } from "expo-linear-gradient"
@@ -20,23 +19,32 @@ export default function Login() {
 	const [submit, setSubmit] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [passwordVisible, setPasswordVisible] = useState(false)
+	const [errors, setErrors] = useState({
+		email: "",
+		password: "",
+	})
 
 	async function handleLogin() {
 		setIsLoading(true)
+
+		let newErrors = { email: "", password: "" }
+		if (!email.trim()) newErrors.email = "Digite seu e-mail"
+		if (!password.trim()) newErrors.password = "Digite sua senha"
+
+		if (newErrors.email || newErrors.password) {
+			setErrors(newErrors)
+			setIsLoading(false)
+			return
+		}
+
 		try {
-			if (!email.trim() || !password.trim()) {
-				Alert.alert("Login", "Preencha todos os campos!")
-				setSubmit(false)
-				setIsLoading(false)
-				return
-			}
 			await signInWithEmailAndPassword(getAuth(), email, password)
 			router.push("/overview")
-			setIsLoading(false)
 		} catch (error) {
-			console.log(error)
-			setIsLoading(false)
-			Alert.alert("Erro", "Não foi possível fazer login. Por favor, tente novamente.")
+			setErrors((prev) => ({
+				...prev,
+				email: "E-mail ou senha incorretos. Por favor, tente novamente.",
+			}))
 		} finally {
 			setSubmit(false)
 		}
@@ -66,11 +74,17 @@ export default function Login() {
 				<View className="gap-4 mb-5">
 					<Text className="font-medium">Email</Text>
 
-					<Input>
+					<Input
+						hasError={!!errors.email}
+						errorMessage={errors.email}
+					>
 						<Input.Field
 							placeholder="Digite seu e-mail"
 							value={email}
-							onChangeText={(text) => setEmail(text)}
+							onChangeText={(text) => {
+								setEmail(text)
+								setErrors((prev) => ({ ...prev, email: "" }))
+							}}
 						/>
 					</Input>
 				</View>
@@ -78,11 +92,17 @@ export default function Login() {
 				<View className="gap-4 mb-3">
 					<Text className="font-medium">Senha</Text>
 
-					<Input>
+					<Input
+						hasError={!!errors.password}
+						errorMessage={errors.password}
+					>
 						<Input.Field
 							placeholder="Digite sua senha"
 							value={password}
-							onChangeText={(text) => setPassword(text)}
+							onChangeText={(text) => {
+								setPassword(text)
+								setErrors((prev) => ({ ...prev, password: "" }))
+							}}
 							secureTextEntry={!passwordVisible}
 						/>
 						<Pressable onPress={() => setPasswordVisible(!passwordVisible)}>

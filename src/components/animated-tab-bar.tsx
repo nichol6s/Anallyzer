@@ -52,7 +52,7 @@ export function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
 	}
 
 	return (
-		<View className="absolute bottom-0 left-0 right-0 h-16 flex-row ">
+		<View className="absolute bottom-0 left-0 right-0 h-16 flex-row bg-white/100">
 			{state.routes.map((route, index) => {
 				const isFocused = state.index === index
 
@@ -73,7 +73,6 @@ export function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
 						navigation.navigate(route.name)
 					}
 
-					// Animação mais suave
 					animatedScales[index].value = withSequence(
 						withSpring(1.15, {
 							mass: 0.5,
