@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, Image, Pressable, Alert, TextInput, Modal } from "react-native"
+import { View, Text, Image, Pressable, Alert, Modal } from "react-native"
+
 import { LinearGradient } from "expo-linear-gradient"
 import { MaterialCommunityIcons, Octicons, Feather, AntDesign } from "@expo/vector-icons"
 import * as ImagePicker from "expo-image-picker"
+
 import { doc, getDoc, updateDoc } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { storage, db } from "@/services/firebaseConfig"
 
 import AvatarImage from "@/components/avatar"
-import Button from "@/components/button"
 import { Input } from "@/components/input"
 import { Select, ISelectedOption } from "@/components/Select"
 
-// Converter as opções para o formato correto
 const EMPLOYEE_OPTIONS: ISelectedOption[] = [
 	{ label: "1 - 50 funcionários", value: "1-50" },
 	{ label: "50 - 100 funcionários", value: "50-100" },
@@ -42,7 +42,6 @@ export default function Profile() {
 
 	const [editingCategory, setEditingCategory] = useState(false)
 	const [editingAbout, setEditingAbout] = useState(false)
-	const [showEmployeesModal, setShowEmployeesModal] = useState(false)
 	const [editingLocation, setEditingLocation] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [tempCategory, setTempCategory] = useState("")
