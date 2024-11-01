@@ -11,13 +11,15 @@ import { storage, db } from "@/services/firebaseConfig"
 import AvatarImage from "@/components/avatar"
 import Button from "@/components/button"
 import { Input } from "@/components/input"
+import { Select, ISelectedOption } from "@/components/Select"
 
-const EMPLOYEE_OPTIONS = [
-	"1 - 50 funcionários",
-	"50 - 100 funcionários",
-	"100 - 1000 funcionários",
-	"1000 - 5000 funcionários",
-	"Mais de 5000 funcionários",
+// Converter as opções para o formato correto
+const EMPLOYEE_OPTIONS: ISelectedOption[] = [
+	{ label: "1 - 50 funcionários", value: "1-50" },
+	{ label: "50 - 100 funcionários", value: "50-100" },
+	{ label: "100 - 1000 funcionários", value: "100-1000" },
+	{ label: "1000 - 5000 funcionários", value: "1000-5000" },
+	{ label: "5000+ funcionários", value: "5000+" },
 ]
 interface CompanyData {
 	name: string
@@ -116,6 +118,13 @@ export default function Profile() {
 		}
 	}
 
+	const handleEmployeeSelect = (value: string) => {
+		const selectedOption = EMPLOYEE_OPTIONS.find((opt) => opt.value === value)
+		if (selectedOption) {
+			updateField("employees", value)
+		}
+	}
+
 	return (
 		<LinearGradient
 			colors={["#DAD5FB", "#FFF"]}
@@ -165,50 +174,40 @@ export default function Profile() {
 
 					<View className="flex-row gap-5">
 						{/* Localização */}
-						{companyData.location ? (
+						<Pressable
+							onPress={() => {
+								setEditingLocation(true)
+								setTempLocation(companyData.location)
+							}}
+						>
 							<Text className="font-regular text-sm">
 								<MaterialCommunityIcons
 									name="office-building-marker"
 									size={16}
 									color="gray"
 								/>{" "}
-								{companyData.location}
+								{companyData.location || "Adicionar local"}
 							</Text>
-						) : (
-							<Pressable onPress={() => setEditingLocation(true)}>
-								<Text className="font-regular text-sm text-gray-400">
-									<MaterialCommunityIcons
-										name="office-building-marker"
-										size={16}
-										color="gray"
-									/>{" "}
-									Adicionar local
-								</Text>
-							</Pressable>
-						)}
+						</Pressable>
 
 						{/* Funcionários */}
-						{companyData.employees ? (
-							<Text className="font-regular text-sm">
-								<Octicons
-									name="people"
-									size={16}
-									color="gray"
-								/>{" "}
-								{companyData.employees}
-							</Text>
-						) : (
-							<Pressable onPress={() => setShowEmployeesModal(true)}>
-								<Text className="font-regular text-sm text-gray-400">
-									<Octicons
-										name="people"
-										size={16}
-										color="gray"
-									/>{" "}
-									Adicionar funcionários
-								</Text>
-							</Pressable>
-						)}
+						<View className="flex-1 flex-row gap-1">
+							<Octicons
+								name="people"
+								size={16}
+								color="gray"
+								className="mt-0.5"
+							/>
+							<Select
+								options={EMPLOYEE_OPTIONS}
+								onSelect={handleEmployeeSelect}
+								selectedValue={companyData.employees}
+								placeholder="Adicionar funcionários"
+								width={200}
+								selectClassName="border-gray-100 bg-transparent"
+								dropdownOffset={{ x: -25, y: -15 }}
+							/>
+						</View>
 					</View>
 				</View>
 
@@ -303,50 +302,13 @@ export default function Profile() {
 							<Input.Field
 								value={tempLocation}
 								onChangeText={setTempLocation}
-								placeholder="Digite a categoria"
+								placeholder="Digite a localização"
 								onSubmitEditing={() => {
 									updateField("location", tempLocation)
 									setEditingLocation(false)
 								}}
 							/>
 						</Input>
-					</View>
-				</View>
-			</Modal>
-
-			{/* Modal para seleção de funcionários */}
-			<Modal
-				visible={showEmployeesModal}
-				transparent
-				animationType="slide"
-			>
-				<View className="flex-1 justify-end">
-					<View className="bg-white p-4 rounded-t-3xl">
-						<View className="flex-row justify-between">
-							<Text className="font-semibold text-lg mb-4">Número de funcionários</Text>
-							<Pressable
-								className="active:opacity-70"
-								onPress={() => setShowEmployeesModal(false)}
-							>
-								<AntDesign
-									name="close"
-									size={24}
-									color="black"
-								/>
-							</Pressable>
-						</View>
-						{EMPLOYEE_OPTIONS.map((option) => (
-							<Pressable
-								key={option}
-								className="py-4 border-b border-gray-200"
-								onPress={() => {
-									updateField("employees", option)
-									setShowEmployeesModal(false)
-								}}
-							>
-								<Text>{option}</Text>
-							</Pressable>
-						))}
 					</View>
 				</View>
 			</Modal>
@@ -377,7 +339,7 @@ export default function Profile() {
 								value={tempAbout}
 								onChangeText={setTempAbout}
 								placeholder="Digite uma breve descrição"
-								multiline
+								returnKeyType="send"
 								maxLength={600}
 								numberOfLines={8}
 								onSubmitEditing={() => {
