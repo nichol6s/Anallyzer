@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Alert, Pressable, Text, View } from "react-native"
+import { Pressable, Text, View } from "react-native"
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
 
 import { Ionicons } from "@expo/vector-icons"
 import { LinearGradient } from "expo-linear-gradient"
@@ -45,6 +46,7 @@ export default function Login() {
 				...prev,
 				email: "E-mail ou senha incorretos. Por favor, tente novamente.",
 			}))
+			setIsLoading(false)
 		} finally {
 			setSubmit(false)
 		}
@@ -70,71 +72,73 @@ export default function Login() {
 			<View className="my-[30px]">
 				<Text className="text-4xl font-medium tracking-tight leading-[44px]">Login</Text>
 			</View>
-			<View>
-				<View className="gap-4 mb-5">
-					<Text className="font-medium">Email</Text>
+			<KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+				<View>
+					<View className="gap-4 mb-5">
+						<Text className="font-medium">Email</Text>
 
-					<Input
-						hasError={!!errors.email}
-						errorMessage={errors.email}
-					>
-						<Input.Field
-							placeholder="Digite seu e-mail"
-							value={email}
-							onChangeText={(text) => {
-								setEmail(text)
-								setErrors((prev) => ({ ...prev, email: "" }))
-							}}
-						/>
-					</Input>
-				</View>
-
-				<View className="gap-4 mb-3">
-					<Text className="font-medium">Senha</Text>
-
-					<Input
-						hasError={!!errors.password}
-						errorMessage={errors.password}
-					>
-						<Input.Field
-							placeholder="Digite sua senha"
-							value={password}
-							onChangeText={(text) => {
-								setPassword(text)
-								setErrors((prev) => ({ ...prev, password: "" }))
-							}}
-							secureTextEntry={!passwordVisible}
-						/>
-						<Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
-							<Ionicons
-								name={passwordVisible ? "eye" : "eye-off"}
-								size={24}
-								color="#000"
+						<Input
+							hasError={!!errors.email}
+							errorMessage={errors.email}
+						>
+							<Input.Field
+								placeholder="Digite seu e-mail"
+								value={email}
+								onChangeText={(text) => {
+									setEmail(text)
+									setErrors((prev) => ({ ...prev, email: "" }))
+								}}
 							/>
+						</Input>
+					</View>
+
+					<View className="gap-4 mb-3">
+						<Text className="font-medium">Senha</Text>
+
+						<Input
+							hasError={!!errors.password}
+							errorMessage={errors.password}
+						>
+							<Input.Field
+								placeholder="Digite sua senha"
+								value={password}
+								onChangeText={(text) => {
+									setPassword(text)
+									setErrors((prev) => ({ ...prev, password: "" }))
+								}}
+								secureTextEntry={!passwordVisible}
+							/>
+							<Pressable onPress={() => setPasswordVisible(!passwordVisible)}>
+								<Ionicons
+									name={passwordVisible ? "eye" : "eye-off"}
+									size={24}
+									color="#000"
+								/>
+							</Pressable>
+						</Input>
+					</View>
+
+					<View className="w-full items-end mb-9">
+						<Pressable onPress={() => router.push("/forgot-password")}>
+							<Text className="font-bold underline text-gray-200"> Esqueceu a senha?</Text>
 						</Pressable>
-					</Input>
+					</View>
+
+					<Button
+						title="Login"
+						onPress={() => setSubmit(true)}
+						isLoading={isLoading}
+					/>
+
+					<View className="flex-row justify-center mt-4">
+						<Text className="font-regular text-gray-200">Ainda não possui uma conta? </Text>
+
+						<Pressable onPress={() => router.push("/signup")}>
+							<Text className="font-bold underline text-gray-200">Registrar-se</Text>
+						</Pressable>
+					</View>
 				</View>
-
-				<View className="w-full items-end mb-9">
-					<Pressable onPress={() => router.push("/forgot-password")}>
-						<Text className="font-bold underline text-gray-200"> Esqueceu a senha?</Text>
-					</Pressable>
-				</View>
-
-				<Button
-					title="Login"
-					onPress={() => setSubmit(true)}
-					isLoading={isLoading}
-				/>
-
-				<View className="flex-row justify-center mt-4">
-					<Text className="font-regular text-gray-200">Ainda não possui uma conta? </Text>
-
-					<Pressable onPress={() => router.push("/signup")}>
-						<Text className="font-bold underline text-gray-200">Registrar-se</Text>
-					</Pressable>
-				</View>
-			</View>
+			</KeyboardAwareScrollView>
 		</LinearGradient>
 	)
 }
