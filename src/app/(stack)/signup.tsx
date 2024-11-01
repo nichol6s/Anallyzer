@@ -23,7 +23,6 @@ export default function Signup() {
 	const [isLoading, setIsLoading] = useState(false)
 
 	async function handleSignup() {
-		console.log("Handle Signup called!")
 		setIsLoading(true)
 		try {
 			if (!name.trim() || !email.trim() || !password.trim()) {
@@ -45,16 +44,9 @@ export default function Signup() {
 				photoURL: "",
 				createdAt: new Date().toISOString(),
 			})
-			console.log(user)
 
+			router.push("/login")
 			setIsLoading(false)
-
-			Alert.alert("Sucesso", "Conta criada com sucesso.", [
-				{
-					text: "OK",
-					onPress: () => router.push("/login"),
-				},
-			])
 		} catch (error) {
 			console.log(error)
 			setIsLoading(false)
