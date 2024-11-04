@@ -1,6 +1,7 @@
 import React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Stack, useRouter } from "expo-router"
+import { ActivityIndicator } from "react-native"
 
 import "@/styles/global.css"
 
@@ -18,19 +19,8 @@ import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "@/services/firebaseConfig"
 
 export default function AppLayout() {
+	const [loading, setLoading] = useState(false)
 	const router = useRouter()
-
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				router.replace("/(tabs)/overview")
-			} else {
-				router.replace("/(stack)/login")
-			}
-		})
-
-		return unsubscribe
-	}, [])
 
 	const [fontsLoaded] = useFonts({
 		PlusJakartaSans_500Medium,
@@ -41,8 +31,30 @@ export default function AppLayout() {
 		Montserrat_700Bold,
 	})
 
-	if (!fontsLoaded) {
-		return null
+	useEffect(() => {
+		const checkAuth = async () => {
+			const unsubscribe = onAuthStateChanged(auth, async (user) => {
+				if (user) {
+					await router.replace("/overview")
+				} else {
+					await router.replace("/login")
+				}
+				setLoading(false)
+			})
+			return unsubscribe
+		}
+
+		checkAuth()
+	}, [])
+
+	if (loading || !fontsLoaded) {
+		return (
+			<ActivityIndicator
+				size="large"
+				color="#BFB7FD"
+				className="flex-1"
+			/>
+		)
 	}
 
 	return (
