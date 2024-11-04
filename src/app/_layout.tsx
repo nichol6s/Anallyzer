@@ -23,10 +23,8 @@ export default function AppLayout() {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			if (user) {
-				// Usuário está logado, redireciona para a tela principal
 				router.replace("/(tabs)/overview")
 			} else {
-				// Usuário não está logado, redireciona para o login
 				router.replace("/(stack)/login")
 			}
 		})
