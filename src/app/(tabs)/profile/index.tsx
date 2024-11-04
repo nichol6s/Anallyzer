@@ -387,7 +387,7 @@ export default function Profile() {
 					index={-1}
 					enablePanDownToClose
 					snapPoints={["30%"]}
-					backgroundStyle={{ backgroundColor: "#FCFF" }}
+					backgroundStyle={{ backgroundColor: "#fcfbf7" }}
 				>
 					<BottomSheetView className="px-5 py-3">
 						<BottomSheetView className="flex-row justify-between items-center">
