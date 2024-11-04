@@ -19,7 +19,7 @@ function Arrow({ ...rest }: PressableProps) {
 function Gallery({ ...rest }: PressableProps) {
 	return (
 		<Pressable
-			className="w-16 h-16 items-center justify-center border border-black-200/20 rounded-full p-2 active:opacity-70"
+			className="w-14 h-14 items-center justify-center border border-black-200/20 rounded-full p-2 active:opacity-70"
 			{...rest}
 		>
 			<MaterialCommunityIcons
