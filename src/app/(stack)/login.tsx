@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons"
 import { LinearGradient } from "expo-linear-gradient"
 import { useRouter } from "expo-router"
 
-import Arrow from "@/components/arrow-back"
+import { Icons } from "@/components/icons"
 import Button from "@/components/button"
 import { Input } from "@/components/input"
 
@@ -66,7 +66,7 @@ export default function Login() {
 			className="flex-1 p-6"
 		>
 			<View className="items-left mt-16">
-				<Arrow onPress={() => router.back()} />
+				<Icons.Arrow onPress={() => router.back()} />
 			</View>
 
 			<View className="my-[30px]">

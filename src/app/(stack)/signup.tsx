@@ -5,7 +5,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { LinearGradient } from "expo-linear-gradient"
 import { useRouter } from "expo-router"
 
-import Arrow from "@/components/arrow-back"
+import { Icons } from "@/components/icons"
 import Button from "@/components/button"
 import { Input } from "@/components/input"
 
@@ -83,7 +83,7 @@ export default function Signup() {
 			className="flex-1 p-6"
 		>
 			<View className="items-left mt-16">
-				<Arrow onPress={() => router.back()} />
+				<Icons.Arrow onPress={() => router.back()} />
 			</View>
 
 			<View className="items-left mt-10">
